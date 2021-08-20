@@ -16,6 +16,7 @@ void * T1 (void * arg){
 
     //testando se posso executar
     pthread_mutex_lock(&qtd_mutex);
+    //só poderei executar caso Thread bem vindo tenha executado
     while(qtd_threads_exe == 0){
         //printf("T1: vai se bloquear...\n");
         pthread_cond_wait(&qtd_cond, &qtd_mutex);
@@ -30,7 +31,7 @@ void * T1 (void * arg){
     pthread_exit(NULL);
 }
 
-//T2: Seja bem vindo 
+//T2: Seja bem vindo (primeira thread)
 void * T2 (void * arg){
     //printf("Sou a Thread 2\n");
     printf("Seja bem-vindo!\n");
@@ -44,12 +45,13 @@ void * T2 (void * arg){
     pthread_exit(NULL);
 }
 
-//T3: Volte sempre
+//T3: Volte sempre (ultima thread)
 void * T3 (void * arg){
     //printf("Sou a Thread 3\n");
 
     //testando se posso executar
     pthread_mutex_lock(&qtd_mutex);
+    //só posso executar caso qtd_threads_exe = 3
     while(qtd_threads_exe < 3){
         //printf("T3: vai se bloquear...\n");
         pthread_cond_wait(&qtd_cond, &qtd_mutex);
@@ -70,6 +72,7 @@ void * T4 (void * arg){
 
     //testando se posso executar
     pthread_mutex_lock(&qtd_mutex);
+    //só poderei executar caso Thread bem vindo tenha executado
     while(qtd_threads_exe == 0){
         //printf("T4: vai se bloquear...\n");
         pthread_cond_wait(&qtd_cond, &qtd_mutex);
