@@ -141,12 +141,12 @@ int main(int argc, char *argv[]) {
   pthread_t *tids; // identificadores 
 
   if (argc < 3) {
-		printf("Digite %s <quantidade de produtoras> <quantidade de consumidoras> \n", argv[0]);
-		return 1;
-	}
+	printf("Digite %s <quantidade de produtoras> <quantidade de consumidoras> \n", argv[0]);
+	return 1;
+  }
 
   numprodutoras = atoi(argv[1]);
-	numconsumidoras = atoi(argv[2]);
+  numconsumidoras = atoi(argv[2]);
 
 
   srand(time(NULL));
@@ -162,8 +162,8 @@ int main(int argc, char *argv[]) {
 
 
   sem_destroy(&produtor);
-	sem_destroy(&buffercheio);
-	sem_destroy(&espacovazio);
+  sem_destroy(&buffercheio);
+  sem_destroy(&espacovazio);
   free(tids);
 
   return 0;
