@@ -38,13 +38,11 @@ void inserir(int item, int id) {
   buffer[in] = item;
   printf("--- Produtora %d vai inserir no buffer ---\n", id);
   printf("--- Elemento %d inserido ---\n", item);
-  //printf("checker.inserir(%d, %d)\n", id, item);
-
+ 
   // quando último elemento for inserido sinaliza o buffer cheio
   if (in == (N - 1)) {
     printf("\n--- Buffer esta cheio ---\n");
     imprimeBuffer(5);
-    //printf("checker.sinalizebuffercheio(%d)\n", id);
     sem_post(&buffercheio);
   }
 
